@@ -13,7 +13,8 @@ while True:
         product = [0]
     else:
         product = monit.Data
-        product.append(random.randint(1, 10))
+        #product.append(random.randint(1, 10))
+        product.append(ctr)
 
     time.sleep(1)           # time delay
     ctr += 1

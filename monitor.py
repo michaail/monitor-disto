@@ -11,6 +11,7 @@ from configuration import PORTS
 class Monitor:
     def __init__(self, mid):
         # suzuki-kasami elements
+        # _Req[self._id] = num
         self._Req = [0] * len(PORTS)
         self._Last = [0] * len(PORTS)
         self._Queue = []
@@ -41,7 +42,7 @@ class Monitor:
         time.sleep(3)
 
     def request(self):
-        print('requesting CS')
+        #print('requesting CS')
         self._lock.acquire()
         if not self.token:
             self._Req[self._id] += 1        # increment own num
@@ -50,17 +51,20 @@ class Monitor:
             self._token_granted.wait()      # waiting for token
         else:
             self._critical = True
-            print('entered critical section in: %s' % self._id)
-        self._lock.release()
+            #print('entered critical section in: %s' % self._id)
+            self._lock.release()
+
 
     def exit(self):
         #self._token_granted.clear()
-        print('exiting CS')
+        #print('exiting CS')
         self._lock.acquire()
         self._Last[self._id] = self._Req[self._id]
-        self.pass_token(self._id, self._Queue, self._Queue, self._Last, self.Data)
+        if self._Queue:
+            a_id = self._Queue.pop(0)
+            self.pass_token(self._id, a_id, self._Queue, self._Last, self.Data)
+            self._token_granted.clear()
         self._critical = False
-        self._token_granted.clear()
         self._lock.release()
 
     # Initializes whole ZMQ stuff
@@ -113,10 +117,12 @@ class Monitor:
                     self._Last = msg['last']
                     self._Queue = msg['queue']
                     self.token = True
+                    print('received token')
                     self._token_granted.set()
 
             elif msg['type'] == 'broadcast':
                 self._Req[msg['id']] = msg['num']   # req[k] = num
+                self._Queue.append(msg['id'])       # append nodes queue
                 # if not using?
 
             else:

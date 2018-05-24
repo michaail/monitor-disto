@@ -2,7 +2,7 @@ import monitor
 import random
 import time
 
-monit = monitor.Monitor(1)
+monit = monitor.Monitor(2)
 
 ctr = 0
 while True:
