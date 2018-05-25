@@ -1,0 +1,6 @@
+.vscode/launch.json
+
+Pipfile
+Pipfile.lock
+__pycache__/configuration.cpython-36.pyc
+__pycache__/monitor.cpython-36.pyc
