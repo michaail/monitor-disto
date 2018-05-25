@@ -4,5 +4,7 @@
 			"path": "."
 		}
 	],
-	"settings": {}
+	"settings": {
+		"python.pythonPath": "/home/mk/.local/share/virtualenvs/monitor-disto-4eLwpQQA/bin/python3"
+	}
 }
