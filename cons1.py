@@ -17,6 +17,7 @@ while True:
         print('Lista jest pusta, czekam na dane...[%s]' % ctr)
         time.sleep(3)
 
+    time.sleep(random.randint(1, 3))
     monit.exit()        # release lock
 
     if ctr == 3:

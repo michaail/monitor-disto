@@ -16,7 +16,7 @@ while True:
         #product.append(random.randint(1, 10))
         product.append(ctr)
 
-    time.sleep(1)           # time delay
+    time.sleep(random.randint(1, 3))           # time delay
     ctr += 1
     monit.Data = product    # updates data for instance
     print('produced new value: %s' % product)
@@ -26,3 +26,5 @@ while True:
         print("produced all elements")
         monit.kill()
         break
+
+print('Koniec przetwarzania')

@@ -1,6 +1,5 @@
 import zmq
 import threading
-import queue
 import time
 from configuration import PORTS
 
@@ -60,10 +59,15 @@ class Monitor:
         #print('exiting CS')
         self._lock.acquire()
         self._Last[self._id] = self._Req[self._id]
-        if self._Queue:
-            a_id = self._Queue.pop(0)
+        port = list(PORTS)
+        port.remove(self.publisher_port)
+        for node in port:
+            if self._Req[PORTS.index(node)] == self._Last[PORTS.index(node)] + 1:
+                self._Queue.append(PORTS.index(node))
+
+        if self._Queue:     # if not empty
+            a_id = self._Queue.pop(0)   # takes element from the top of list
             self.pass_token(self._id, a_id, self._Queue, self._Last, self.Data)
-            self._token_granted.clear()
         self._critical = False
         self._lock.release()
 
@@ -93,19 +97,22 @@ class Monitor:
     # passes the token to specified node
     def pass_token(self, id, a_id, Q, last, data):
         msg = {'type': 'token', 'id': id, 'a_id': a_id, 'queue': Q, 'last': last, 'data': data}
+        print("passing token to: %s" % a_id)
         self.token = False
+        self._token_granted.clear()
         self.pub_sock.send_json(msg)
 
     # Sends messages to other nods
     def req_broadcast(self, id, num):
         msg = {'type': 'broadcast', 'id': id, 'num': num}
+        print('broadcasts %s' % self._Req)
         self.pub_sock.send_json(msg)
 
     # Receives incoming messages (works in separate thread)
     def message_recv(self):
         sub_sock = self.subscriber_init()
+        #sub_sock.RCVTIMEO = 500
         while self._is_active:
-
             msg = sub_sock.recv_json()  # Receive JSON object on subscriber
             self._lock.acquire()
             if msg['id'] == self._id:   # Received message from myself
@@ -117,12 +124,16 @@ class Monitor:
                     self._Last = msg['last']
                     self._Queue = msg['queue']
                     self.token = True
-                    print('received token')
+                    print('received token from: %s' % msg['id'])
                     self._token_granted.set()
 
             elif msg['type'] == 'broadcast':
                 self._Req[msg['id']] = msg['num']   # req[k] = num
-                self._Queue.append(msg['id'])       # append nodes queue
+                print("received broadcast %s" % self._Req)
+                # checks if I have token but not in CS and other node has a fresh request
+                if self.token and not self._critical and self._Req[msg['id']] == self._Last[msg['id']] + 1:
+                    self.pass_token(self._id, msg['id'], self._Queue, self._Last, self.Data)
+                #self._Queue.append(msg['id'])       # append nodes queue
                 # if not using?
 
             else:
@@ -131,9 +142,9 @@ class Monitor:
         sub_sock.close()
 
     def kill(self):
-        self.msg_recvr.join()
         self.pub_sock.close()
-
         self._is_active = False
+        self.msg_recvr.join()
+        print('killed process')
 
 
