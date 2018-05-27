@@ -16,10 +16,11 @@ while True:
         #product.append(random.randint(1, 10))
         product.append(ctr)
 
-    time.sleep(random.randint(1, 3))           # time delay
+    #time.sleep(random.randint(1, 3))           # time delay
     ctr += 1
     monit.Data = product    # updates data for instance
     print('produced new value: %s' % product)
+    print('################################')
     monit.exit()            # releases lock
 
     if ctr == 10:
