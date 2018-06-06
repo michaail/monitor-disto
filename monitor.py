@@ -103,7 +103,7 @@ class Monitor:
                 self._lock.release()
 
     # Initializes whole ZMQ stuff
-    def publisher_init(self):   # TODO exception handling for creating new context and port binding
+    def publisher_init(self):   
         pub_ctx = zmq.Context()
         pub_sock = pub_ctx.socket(zmq.PUB)
         pub_sock.bind('tcp://*:%s' % self.publisher_port)
@@ -131,7 +131,6 @@ class Monitor:
     def pass_token(self, id, a_id, Q, last, data):
         self.token = False
         msg = {'type': 'token', 'id': id, 'a_id': a_id, 'queue': Q, 'last': last, 'data': data}
-        #print("passing token to: %s token: Q: %s; Last: %s; Data: %s; " % (a_id, Q, last, data))
         logger.info(str(self._id) + ' sends token to: ' + str(a_id) + ' | Q = ' + str(Q) + ' | Last: ' + str(last) + ' | Data: ' + str(data))
         self._token_granted.clear()
         self.pub_sock.send_json(msg)
@@ -139,15 +138,14 @@ class Monitor:
     # Sends messages to other nods
     def req_broadcast(self, id, num):
         msg = {'type': 'broadcast', 'id': id, 'num': num}
-        #print('broadcasts %s' % self._Req)
         logger.info(str(self._id) + ' broadcasts: ' + str(self._Req))
         self.pub_sock.send_json(msg)
 
     # Receives incoming messages (works in separate thread)
     def message_recv(self):
         sub_sock, poll = self.subscriber_init()
-        #sub_sock.RCVTIMEO = 500
         while self._is_active:
+
             # http://learning-0mq-with-pyzmq.readthedocs.io/en/latest/pyzmq/multisocket/zmqpoller.html
             socks = dict(poll.poll(1000))
             if sub_sock in socks and socks[sub_sock] == zmq.POLLIN:
@@ -165,18 +163,15 @@ class Monitor:
                         self._Queue = msg['queue']
                         self.token = True
                         self._token_just_granted = True
-                        #print('received token from: %s token: Q: %s; Last: %s; Data: %s;' % (msg['id'], msg['queue'], msg['last'], msg['data']))
                         logger.info(str(self._id) + ' received token from: ' + str(msg['id']) + ' | Q = ' + str(msg['queue']) + ' | Last: ' + str(msg['last']) + ' | Data: ' + str(msg['data']))
                         self._token_granted.set()
 
                 elif msg['type'] == 'broadcast':
                     self._Req[msg['id']] = max(self._Req[msg['id']], msg['num'])
-                    #print("received broadcast %s from %s" % (self._Req, msg['id']))
                     logger.info(str(self._id) + ' received broadcast: : ' + str(self._Req) + ' | from: ' + str(msg['id']))
 
                     # checks if I have token but not in CS and other node has a fresh request
                     if self.token and self._critical == False and self._Req[msg['id']] == self._Last[msg['id']] + 1 and self._token_just_granted == False:
-                        #print('not in cs passes token')
                         logger.info(str(self._id) + ' not in cs passes token')
                         try:
                             self.pass_token(self._id, msg['id'], self._Queue, self._Last, self.Data)

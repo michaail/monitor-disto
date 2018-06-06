@@ -8,11 +8,6 @@ cid = int(sys.argv[1])
 
 logger = logging.getLogger("__name__")
 logger.setLevel(logging.INFO)
-#fh = logging.FileHandler("logs.txt")
-#fh.setLevel(logging.INFO)
-#formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
-#fh.setFormatter(formatter)
-#logger.addHandler(fh)
 
 logger.info(str(cid) + ' consument start')
 
