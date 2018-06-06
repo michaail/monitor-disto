@@ -1,13 +1,20 @@
 import monitor
 import random
 import time
+import sys
+import logging
 
-monit = monitor.Monitor(0)
+pid = int(sys.argv[1])
 
+logger = logging.getLogger("__name__")
+logger.setLevel(logging.INFO)
+
+logger.info(str(pid) + ' producer start')
+
+monit = monitor.Monitor(pid)
 
 ctr = 0
 while True:
-    print('Producer iter.')
     monit.request()     # wait on lock
     if ctr == 0:        # produces
         product = [0]
@@ -16,10 +23,10 @@ while True:
         #product.append(random.randint(1, 10))
         product.append(ctr)
 
-    #time.sleep(random.randint(1, 3))           # time delay
+    time.sleep(0.2)           # time delay
     ctr += 1
     monit.Data = product    # updates data for instance
-    print('produced new value: %s' % product)
+    print('%s produced new value: %s' % (pid, product))
     print('################################')
     monit.exit()            # releases lock
 
@@ -28,4 +35,4 @@ while True:
         monit.kill()
         break
 
-print('Koniec przetwarzania')
+print('%s Koniec przetwarzania *****' % pid)

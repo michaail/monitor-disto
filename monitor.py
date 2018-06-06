@@ -1,14 +1,24 @@
 import zmq
 import threading
 import time
+import logging
+import random
 from configuration import PORTS
 
+logger = logging.getLogger("__name__")
+logger.setLevel(logging.INFO)
+fh = logging.FileHandler("logs.txt")
+fh.setLevel(logging.INFO)
+formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
+fh.setFormatter(formatter)
+logger.addHandler(fh)
 
 # using Suzuki-Kasami token based algorithm
 # unique token is shared among nodes
 # node which possesses the token is allowed to enter CS (critical section)
 class Monitor:
     def __init__(self, mid):
+        logger.info(str(mid) + ' Created monitor')
         # suzuki-kasami elements
         # _Req[self._id] = num
         self._Req = [0] * len(PORTS)
@@ -16,6 +26,7 @@ class Monitor:
         self._Queue = []
         self._token_granted = threading.Event()
         self._id = mid
+        self._critical = False
         if self._id == 0:       # Token handling
             self.token = True   # has token at start
             self._token_granted.set()
@@ -23,9 +34,9 @@ class Monitor:
         else:
             self.token = False  # don't have token at start
 
-        self._critical = False
+        
         self._token_just_granted = False
-
+        
         # zmq variables
         self.publisher_port = PORTS[mid]
         self.msg_type = ''
@@ -43,11 +54,12 @@ class Monitor:
         time.sleep(3)
 
     def request(self):
-        print('***requesting CS***')
+        logger.info(str(self._id) + ' requests CS')
         self._lock.acquire()
         if self.token:
             self._critical = True
-            print('***** Have Token & ENTERED CS *****')
+            logger.info(str(self._id) + ' has token & enters CS')
+            self._lock.release()
             return
         else:
             self._Req[self._id] += 1        # increment own num
@@ -59,21 +71,21 @@ class Monitor:
         self._lock.acquire()
         if self.token:
             self._token_just_granted = False
-            print('***** Token granted enter CS ******')
+            logger.info(str(self._id) + ' just gets token and enters CS')
             self._critical = True
+            self._lock.release()
             return
             #print('entered critical section in: %s' % self._id)
 
 
     def exit(self):
-        #self._token_granted.clear()
-        #print('exiting CS')
-        if self.token:
-            #self._lock.acquire()
+        if self.token and self._critical:
+            self._lock.acquire()
             self._Last[self._id] = self._Req[self._id]
             port = list(PORTS)
             port.remove(self.publisher_port)
             self._critical = False
+            
             for node in port:           # for every node k 
                 k = PORTS.index(node)   
                 if k in self._Queue:    
@@ -82,10 +94,11 @@ class Monitor:
                     if self._Req[PORTS.index(node)] == self._Last[PORTS.index(node)] + 1:
                         self._Queue.append(PORTS.index(node))
 
-            if self._Queue:     # if not empty
+            if self._Queue:                 # if not empty
+                random.shuffle(self._Queue)
                 a_id = self._Queue.pop(0)   # takes element from the top of list
                 self.pass_token(self._id, a_id, self._Queue, self._Last, self.Data)
-            print('***exitted cs***')
+            logger.info(str(self._id) + ' exitted CS')
             if self._lock.locked():
                 self._lock.release()
 
@@ -95,6 +108,7 @@ class Monitor:
         pub_sock = pub_ctx.socket(zmq.PUB)
         pub_sock.bind('tcp://*:%s' % self.publisher_port)
         print('initialized zmq objects\nWaiting for other Publishers...')
+        logger.info(str(self._id) + ' initializes zmq parts')
         time.sleep(8)  # wait for other publishers to populate
         return pub_sock
 
@@ -117,14 +131,16 @@ class Monitor:
     def pass_token(self, id, a_id, Q, last, data):
         self.token = False
         msg = {'type': 'token', 'id': id, 'a_id': a_id, 'queue': Q, 'last': last, 'data': data}
-        print("passing token to: %s token: Q: %s; Last: %s; Data: %s; " % (a_id, Q, last, data))
+        #print("passing token to: %s token: Q: %s; Last: %s; Data: %s; " % (a_id, Q, last, data))
+        logger.info(str(self._id) + ' sends token to: ' + str(a_id) + ' | Q = ' + str(Q) + ' | Last: ' + str(last) + ' | Data: ' + str(data))
         self._token_granted.clear()
         self.pub_sock.send_json(msg)
 
     # Sends messages to other nods
     def req_broadcast(self, id, num):
         msg = {'type': 'broadcast', 'id': id, 'num': num}
-        print('broadcasts %s' % self._Req)
+        #print('broadcasts %s' % self._Req)
+        logger.info(str(self._id) + ' broadcasts: ' + str(self._Req))
         self.pub_sock.send_json(msg)
 
     # Receives incoming messages (works in separate thread)
@@ -149,18 +165,23 @@ class Monitor:
                         self._Queue = msg['queue']
                         self.token = True
                         self._token_just_granted = True
-                        print('received token from: %s token: Q: %s; Last: %s; Data: %s;' % (msg['id'], msg['queue'], msg['last'], msg['data']))
+                        #print('received token from: %s token: Q: %s; Last: %s; Data: %s;' % (msg['id'], msg['queue'], msg['last'], msg['data']))
+                        logger.info(str(self._id) + ' received token from: ' + str(msg['id']) + ' | Q = ' + str(msg['queue']) + ' | Last: ' + str(msg['last']) + ' | Data: ' + str(msg['data']))
                         self._token_granted.set()
 
                 elif msg['type'] == 'broadcast':
                     self._Req[msg['id']] = max(self._Req[msg['id']], msg['num'])
-                    print("received broadcast %s from %s" % (self._Req, msg['id']))
+                    #print("received broadcast %s from %s" % (self._Req, msg['id']))
+                    logger.info(str(self._id) + ' received broadcast: : ' + str(self._Req) + ' | from: ' + str(msg['id']))
+
                     # checks if I have token but not in CS and other node has a fresh request
                     if self.token and self._critical == False and self._Req[msg['id']] == self._Last[msg['id']] + 1 and self._token_just_granted == False:
-                        print('not in cs passes token')
-                        self.pass_token(self._id, msg['id'], self._Queue, self._Last, self.Data)
-                    #self._Queue.append(msg['id'])       # append nodes queue
-                    # if not using?
+                        #print('not in cs passes token')
+                        logger.info(str(self._id) + ' not in cs passes token')
+                        try:
+                            self.pass_token(self._id, msg['id'], self._Queue, self._Last, self.Data)
+                        except:
+                            return
 
                 else:
                     print('Received unknown message!!!')
@@ -170,9 +191,9 @@ class Monitor:
         sub_sock.close()
 
     def kill(self):
-        self.pub_sock.close()
         self._is_active = False
         self.msg_recvr.join()
+        self.pub_sock.close()
         print('killed process')
 
 

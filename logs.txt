@@ -1,0 +1,265 @@
+Started main script
+2018-06-06 19:33:44,083 - INFO - 2 consument start
+2018-06-06 19:33:44,083 - INFO - 2 Created monitor
+2018-06-06 19:33:44,084 - INFO - 2 initializes zmq parts
+2018-06-06 19:33:44,112 - INFO - 1 consument start
+2018-06-06 19:33:44,113 - INFO - 1 Created monitor
+2018-06-06 19:33:44,113 - INFO - 1 initializes zmq parts
+2018-06-06 19:33:44,116 - INFO - 0 producer start
+2018-06-06 19:33:44,117 - INFO - 0 Created monitor
+2018-06-06 19:33:44,117 - INFO - 0 initializes zmq parts
+2018-06-06 19:33:55,094 - INFO - 2 requests CS
+2018-06-06 19:33:55,095 - INFO - 2 broadcasts: [0, 0, 1, 0]
+2018-06-06 19:33:55,109 - INFO - 1 received broadcast: : [0, 0, 1, 0] | from: 2
+2018-06-06 19:33:55,109 - INFO - 0 received broadcast: : [0, 0, 1, 0] | from: 2
+2018-06-06 19:33:55,124 - INFO - 1 requests CS
+2018-06-06 19:33:55,125 - INFO - 1 broadcasts: [0, 1, 1, 0]
+2018-06-06 19:33:55,125 - INFO - 2 received broadcast: : [0, 1, 1, 0] | from: 1
+2018-06-06 19:33:55,125 - INFO - 0 received broadcast: : [0, 1, 1, 0] | from: 1
+2018-06-06 19:33:55,126 - INFO - 0 requests CS
+2018-06-06 19:33:55,126 - INFO - 0 has token & enters CS
+2018-06-06 19:33:55,327 - INFO - 0 sends token to: 1 | Q = [2] | Last: [0, 0, 0, 0] | Data: [0]
+2018-06-06 19:33:55,328 - INFO - 0 exitted CS
+2018-06-06 19:33:55,328 - INFO - 0 requests CS
+2018-06-06 19:33:55,328 - INFO - 0 broadcasts: [1, 1, 1, 0]
+2018-06-06 19:33:55,328 - INFO - 1 received token from: 0 | Q = [2] | Last: [0, 0, 0, 0] | Data: [0]
+2018-06-06 19:33:55,329 - INFO - 1 just gets token and enters CS
+2018-06-06 19:33:55,329 - INFO - 2 received broadcast: : [1, 1, 1, 0] | from: 0
+2018-06-06 19:33:55,329 - INFO - 1 received broadcast: : [1, 1, 1, 0] | from: 0
+2018-06-06 19:33:56,255 - INFO - 1 sends token to: 0 | Q = [2] | Last: [0, 1, 0, 0] | Data: []
+2018-06-06 19:33:56,256 - INFO - 1 exitted CS
+2018-06-06 19:33:56,256 - INFO - 1 requests CS
+2018-06-06 19:33:56,256 - INFO - 1 broadcasts: [1, 2, 1, 0]
+2018-06-06 19:33:56,256 - INFO - 0 received token from: 1 | Q = [2] | Last: [0, 1, 0, 0] | Data: []
+2018-06-06 19:33:56,257 - INFO - 0 just gets token and enters CS
+2018-06-06 19:33:56,257 - INFO - 2 received broadcast: : [1, 2, 1, 0] | from: 1
+2018-06-06 19:33:56,258 - INFO - 0 received broadcast: : [1, 2, 1, 0] | from: 1
+2018-06-06 19:33:56,458 - INFO - 0 sends token to: 1 | Q = [2] | Last: [1, 1, 0, 0] | Data: [1]
+2018-06-06 19:33:56,458 - INFO - 0 exitted CS
+2018-06-06 19:33:56,458 - INFO - 0 requests CS
+2018-06-06 19:33:56,459 - INFO - 1 received token from: 0 | Q = [2] | Last: [1, 1, 0, 0] | Data: [1]
+2018-06-06 19:33:56,459 - INFO - 0 broadcasts: [2, 2, 1, 0]
+2018-06-06 19:33:56,459 - INFO - 1 just gets token and enters CS
+2018-06-06 19:33:56,459 - INFO - 2 received broadcast: : [2, 2, 1, 0] | from: 0
+2018-06-06 19:33:56,459 - INFO - 1 received broadcast: : [2, 2, 1, 0] | from: 0
+2018-06-06 19:33:56,769 - INFO - 1 sends token to: 0 | Q = [2] | Last: [1, 2, 0, 0] | Data: []
+2018-06-06 19:33:56,769 - INFO - 1 exitted CS
+2018-06-06 19:33:56,769 - INFO - 1 requests CS
+2018-06-06 19:33:56,770 - INFO - 1 broadcasts: [2, 3, 1, 0]
+2018-06-06 19:33:56,770 - INFO - 0 received token from: 1 | Q = [2] | Last: [1, 2, 0, 0] | Data: []
+2018-06-06 19:33:56,770 - INFO - 0 just gets token and enters CS
+2018-06-06 19:33:56,770 - INFO - 2 received broadcast: : [2, 3, 1, 0] | from: 1
+2018-06-06 19:33:56,771 - INFO - 0 received broadcast: : [2, 3, 1, 0] | from: 1
+2018-06-06 19:33:56,971 - INFO - 0 sends token to: 2 | Q = [1] | Last: [2, 2, 0, 0] | Data: [2]
+2018-06-06 19:33:56,972 - INFO - 0 exitted CS
+2018-06-06 19:33:56,972 - INFO - 2 received token from: 0 | Q = [1] | Last: [2, 2, 0, 0] | Data: [2]
+2018-06-06 19:33:56,972 - INFO - 0 requests CS
+2018-06-06 19:33:56,973 - INFO - 0 broadcasts: [3, 3, 1, 0]
+2018-06-06 19:33:56,973 - INFO - 2 just gets token and enters CS
+2018-06-06 19:33:56,973 - INFO - 2 received broadcast: : [3, 3, 1, 0] | from: 0
+2018-06-06 19:33:56,973 - INFO - 1 received broadcast: : [3, 3, 1, 0] | from: 0
+2018-06-06 19:33:57,368 - INFO - 2 sends token to: 1 | Q = [0] | Last: [2, 2, 1, 0] | Data: []
+2018-06-06 19:33:57,369 - INFO - 2 exitted CS
+2018-06-06 19:33:57,369 - INFO - 2 requests CS
+2018-06-06 19:33:57,369 - INFO - 1 received token from: 2 | Q = [0] | Last: [2, 2, 1, 0] | Data: []
+2018-06-06 19:33:57,369 - INFO - 2 broadcasts: [3, 3, 2, 0]
+2018-06-06 19:33:57,370 - INFO - 1 just gets token and enters CS
+2018-06-06 19:33:57,370 - INFO - 0 received broadcast: : [3, 3, 2, 0] | from: 2
+2018-06-06 19:33:57,370 - INFO - 1 received broadcast: : [3, 3, 2, 0] | from: 2
+2018-06-06 19:33:58,250 - INFO - 1 sends token to: 0 | Q = [2] | Last: [2, 3, 1, 0] | Data: []
+2018-06-06 19:33:58,251 - INFO - 1 exitted CS
+2018-06-06 19:33:58,251 - INFO - 0 received token from: 1 | Q = [2] | Last: [2, 3, 1, 0] | Data: []
+2018-06-06 19:33:58,251 - INFO - 1 requests CS
+2018-06-06 19:33:58,252 - INFO - 1 broadcasts: [3, 4, 2, 0]
+2018-06-06 19:33:58,252 - INFO - 0 just gets token and enters CS
+2018-06-06 19:33:58,252 - INFO - 2 received broadcast: : [3, 4, 2, 0] | from: 1
+2018-06-06 19:33:58,252 - INFO - 0 received broadcast: : [3, 4, 2, 0] | from: 1
+2018-06-06 19:33:58,452 - INFO - 0 sends token to: 1 | Q = [2] | Last: [3, 3, 1, 0] | Data: [3]
+2018-06-06 19:33:58,453 - INFO - 0 exitted CS
+2018-06-06 19:33:58,453 - INFO - 0 requests CS
+2018-06-06 19:33:58,453 - INFO - 1 received token from: 0 | Q = [2] | Last: [3, 3, 1, 0] | Data: [3]
+2018-06-06 19:33:58,453 - INFO - 0 broadcasts: [4, 4, 2, 0]
+2018-06-06 19:33:58,453 - INFO - 1 just gets token and enters CS
+2018-06-06 19:33:58,454 - INFO - 2 received broadcast: : [4, 4, 2, 0] | from: 0
+2018-06-06 19:33:58,454 - INFO - 1 received broadcast: : [4, 4, 2, 0] | from: 0
+2018-06-06 19:33:59,402 - INFO - 1 sends token to: 0 | Q = [2] | Last: [3, 4, 1, 0] | Data: []
+2018-06-06 19:33:59,403 - INFO - 1 exitted CS
+2018-06-06 19:33:59,403 - INFO - 0 received token from: 1 | Q = [2] | Last: [3, 4, 1, 0] | Data: []
+2018-06-06 19:33:59,404 - INFO - 0 just gets token and enters CS
+2018-06-06 19:33:59,404 - INFO - 1 requests CS
+2018-06-06 19:33:59,404 - INFO - 1 broadcasts: [4, 5, 2, 0]
+2018-06-06 19:33:59,405 - INFO - 0 received broadcast: : [4, 5, 2, 0] | from: 1
+2018-06-06 19:33:59,405 - INFO - 2 received broadcast: : [4, 5, 2, 0] | from: 1
+2018-06-06 19:33:59,605 - INFO - 0 sends token to: 1 | Q = [2] | Last: [4, 4, 1, 0] | Data: [4]
+2018-06-06 19:33:59,606 - INFO - 0 exitted CS
+2018-06-06 19:33:59,606 - INFO - 0 requests CS
+2018-06-06 19:33:59,606 - INFO - 1 received token from: 0 | Q = [2] | Last: [4, 4, 1, 0] | Data: [4]
+2018-06-06 19:33:59,606 - INFO - 0 broadcasts: [5, 5, 2, 0]
+2018-06-06 19:33:59,606 - INFO - 1 just gets token and enters CS
+2018-06-06 19:33:59,606 - INFO - 2 received broadcast: : [5, 5, 2, 0] | from: 0
+2018-06-06 19:33:59,606 - INFO - 1 received broadcast: : [5, 5, 2, 0] | from: 0
+2018-06-06 19:34:00,447 - INFO - 1 sends token to: 0 | Q = [2] | Last: [4, 5, 1, 0] | Data: []
+2018-06-06 19:34:00,447 - INFO - 1 exitted CS
+2018-06-06 19:34:00,447 - INFO - 1 requests CS
+2018-06-06 19:34:00,447 - INFO - 1 broadcasts: [5, 6, 2, 0]
+2018-06-06 19:34:00,448 - INFO - 2 received broadcast: : [5, 6, 2, 0] | from: 1
+2018-06-06 19:34:00,448 - INFO - 0 received token from: 1 | Q = [2] | Last: [4, 5, 1, 0] | Data: []
+2018-06-06 19:34:00,448 - INFO - 0 just gets token and enters CS
+2018-06-06 19:34:00,449 - INFO - 0 received broadcast: : [5, 6, 2, 0] | from: 1
+2018-06-06 19:34:00,649 - INFO - 0 sends token to: 1 | Q = [2] | Last: [5, 5, 1, 0] | Data: [5]
+2018-06-06 19:34:00,650 - INFO - 0 exitted CS
+2018-06-06 19:34:00,650 - INFO - 0 requests CS
+2018-06-06 19:34:00,651 - INFO - 1 received token from: 0 | Q = [2] | Last: [5, 5, 1, 0] | Data: [5]
+2018-06-06 19:34:00,651 - INFO - 0 broadcasts: [6, 6, 2, 0]
+2018-06-06 19:34:00,651 - INFO - 1 just gets token and enters CS
+2018-06-06 19:34:00,652 - INFO - 1 received broadcast: : [6, 6, 2, 0] | from: 0
+2018-06-06 19:34:00,652 - INFO - 2 received broadcast: : [6, 6, 2, 0] | from: 0
+2018-06-06 19:34:01,378 - INFO - 1 sends token to: 0 | Q = [2] | Last: [5, 6, 1, 0] | Data: []
+2018-06-06 19:34:01,378 - INFO - 1 exitted CS
+2018-06-06 19:34:01,379 - INFO - 1 requests CS
+2018-06-06 19:34:01,379 - INFO - 1 broadcasts: [6, 7, 2, 0]
+2018-06-06 19:34:01,379 - INFO - 0 received token from: 1 | Q = [2] | Last: [5, 6, 1, 0] | Data: []
+2018-06-06 19:34:01,379 - INFO - 0 just gets token and enters CS
+2018-06-06 19:34:01,380 - INFO - 2 received broadcast: : [6, 7, 2, 0] | from: 1
+2018-06-06 19:34:01,380 - INFO - 0 received broadcast: : [6, 7, 2, 0] | from: 1
+2018-06-06 19:34:01,580 - INFO - 0 sends token to: 2 | Q = [1] | Last: [6, 6, 1, 0] | Data: [6]
+2018-06-06 19:34:01,581 - INFO - 0 exitted CS
+2018-06-06 19:34:01,581 - INFO - 0 requests CS
+2018-06-06 19:34:01,581 - INFO - 0 broadcasts: [7, 7, 2, 0]
+2018-06-06 19:34:01,581 - INFO - 2 received token from: 0 | Q = [1] | Last: [6, 6, 1, 0] | Data: [6]
+2018-06-06 19:34:01,582 - INFO - 2 just gets token and enters CS
+2018-06-06 19:34:01,582 - INFO - 1 received broadcast: : [7, 7, 2, 0] | from: 0
+2018-06-06 19:34:01,582 - INFO - 2 received broadcast: : [7, 7, 2, 0] | from: 0
+2018-06-06 19:34:02,533 - INFO - 2 sends token to: 0 | Q = [1] | Last: [6, 6, 2, 0] | Data: []
+2018-06-06 19:34:02,533 - INFO - 2 exitted CS
+2018-06-06 19:34:02,533 - INFO - 2 requests CS
+2018-06-06 19:34:02,533 - INFO - 2 broadcasts: [7, 7, 3, 0]
+2018-06-06 19:34:02,533 - INFO - 0 received token from: 2 | Q = [1] | Last: [6, 6, 2, 0] | Data: []
+2018-06-06 19:34:02,534 - INFO - 0 just gets token and enters CS
+2018-06-06 19:34:02,534 - INFO - 1 received broadcast: : [7, 7, 3, 0] | from: 2
+2018-06-06 19:34:02,534 - INFO - 0 received broadcast: : [7, 7, 3, 0] | from: 2
+2018-06-06 19:34:02,735 - INFO - 0 sends token to: 1 | Q = [2] | Last: [7, 6, 2, 0] | Data: [7]
+2018-06-06 19:34:02,735 - INFO - 0 exitted CS
+2018-06-06 19:34:02,736 - INFO - 0 requests CS
+2018-06-06 19:34:02,736 - INFO - 0 broadcasts: [8, 7, 3, 0]
+2018-06-06 19:34:02,736 - INFO - 1 received token from: 0 | Q = [2] | Last: [7, 6, 2, 0] | Data: [7]
+2018-06-06 19:34:02,737 - INFO - 1 just gets token and enters CS
+2018-06-06 19:34:02,737 - INFO - 2 received broadcast: : [8, 7, 3, 0] | from: 0
+2018-06-06 19:34:02,737 - INFO - 1 received broadcast: : [8, 7, 3, 0] | from: 0
+2018-06-06 19:34:03,357 - INFO - 1 sends token to: 2 | Q = [0] | Last: [7, 7, 2, 0] | Data: []
+2018-06-06 19:34:03,358 - INFO - 1 exitted CS
+2018-06-06 19:34:03,358 - INFO - 1 requests CS
+2018-06-06 19:34:03,359 - INFO - 2 received token from: 1 | Q = [0] | Last: [7, 7, 2, 0] | Data: []
+2018-06-06 19:34:03,359 - INFO - 1 broadcasts: [8, 8, 3, 0]
+2018-06-06 19:34:03,359 - INFO - 2 just gets token and enters CS
+2018-06-06 19:34:03,360 - INFO - 2 received broadcast: : [8, 8, 3, 0] | from: 1
+2018-06-06 19:34:03,360 - INFO - 0 received broadcast: : [8, 8, 3, 0] | from: 1
+2018-06-06 19:34:04,511 - INFO - 2 sends token to: 0 | Q = [1] | Last: [7, 7, 3, 0] | Data: []
+2018-06-06 19:34:04,512 - INFO - 2 exitted CS
+2018-06-06 19:34:04,512 - INFO - 2 requests CS
+2018-06-06 19:34:04,512 - INFO - 2 broadcasts: [8, 8, 4, 0]
+2018-06-06 19:34:04,512 - INFO - 0 received token from: 2 | Q = [1] | Last: [7, 7, 3, 0] | Data: []
+2018-06-06 19:34:04,513 - INFO - 0 just gets token and enters CS
+2018-06-06 19:34:04,513 - INFO - 1 received broadcast: : [8, 8, 4, 0] | from: 2
+2018-06-06 19:34:04,513 - INFO - 0 received broadcast: : [8, 8, 4, 0] | from: 2
+2018-06-06 19:34:04,714 - INFO - 0 sends token to: 1 | Q = [2] | Last: [8, 7, 3, 0] | Data: [8]
+2018-06-06 19:34:04,714 - INFO - 0 exitted CS
+2018-06-06 19:34:04,715 - INFO - 0 requests CS
+2018-06-06 19:34:04,715 - INFO - 0 broadcasts: [9, 8, 4, 0]
+2018-06-06 19:34:04,715 - INFO - 1 received token from: 0 | Q = [2] | Last: [8, 7, 3, 0] | Data: [8]
+2018-06-06 19:34:04,716 - INFO - 1 just gets token and enters CS
+2018-06-06 19:34:04,716 - INFO - 2 received broadcast: : [9, 8, 4, 0] | from: 0
+2018-06-06 19:34:04,716 - INFO - 1 received broadcast: : [9, 8, 4, 0] | from: 0
+2018-06-06 19:34:05,336 - INFO - 1 sends token to: 2 | Q = [0] | Last: [8, 8, 3, 0] | Data: []
+2018-06-06 19:34:05,337 - INFO - 1 exitted CS
+2018-06-06 19:34:05,337 - INFO - 1 requests CS
+2018-06-06 19:34:05,337 - INFO - 1 broadcasts: [9, 9, 4, 0]
+2018-06-06 19:34:05,337 - INFO - 2 received token from: 1 | Q = [0] | Last: [8, 8, 3, 0] | Data: []
+2018-06-06 19:34:05,338 - INFO - 2 just gets token and enters CS
+2018-06-06 19:34:05,338 - INFO - 0 received broadcast: : [9, 9, 4, 0] | from: 1
+2018-06-06 19:34:05,338 - INFO - 2 received broadcast: : [9, 9, 4, 0] | from: 1
+2018-06-06 19:34:06,358 - INFO - 2 sends token to: 1 | Q = [0] | Last: [8, 8, 4, 0] | Data: []
+2018-06-06 19:34:06,359 - INFO - 2 exitted CS
+2018-06-06 19:34:06,359 - INFO - 2 requests CS
+2018-06-06 19:34:06,359 - INFO - 2 broadcasts: [9, 9, 5, 0]
+2018-06-06 19:34:06,359 - INFO - 1 received token from: 2 | Q = [0] | Last: [8, 8, 4, 0] | Data: []
+2018-06-06 19:34:06,359 - INFO - 1 just gets token and enters CS
+2018-06-06 19:34:06,359 - INFO - 0 received broadcast: : [9, 9, 5, 0] | from: 2
+2018-06-06 19:34:06,359 - INFO - 1 received broadcast: : [9, 9, 5, 0] | from: 2
+2018-06-06 19:34:07,432 - INFO - 1 sends token to: 2 | Q = [0] | Last: [8, 9, 4, 0] | Data: []
+2018-06-06 19:34:07,433 - INFO - 1 exitted CS
+2018-06-06 19:34:07,433 - INFO - 1 requests CS
+2018-06-06 19:34:07,433 - INFO - 2 received token from: 1 | Q = [0] | Last: [8, 9, 4, 0] | Data: []
+2018-06-06 19:34:07,433 - INFO - 1 broadcasts: [9, 10, 5, 0]
+2018-06-06 19:34:07,434 - INFO - 2 just gets token and enters CS
+2018-06-06 19:34:07,434 - INFO - 2 received broadcast: : [9, 10, 5, 0] | from: 1
+2018-06-06 19:34:07,434 - INFO - 0 received broadcast: : [9, 10, 5, 0] | from: 1
+2018-06-06 19:34:08,608 - INFO - 2 sends token to: 0 | Q = [1] | Last: [8, 9, 5, 0] | Data: []
+2018-06-06 19:34:08,609 - INFO - 2 exitted CS
+2018-06-06 19:34:08,609 - INFO - 2 requests CS
+2018-06-06 19:34:08,609 - INFO - 0 received token from: 2 | Q = [1] | Last: [8, 9, 5, 0] | Data: []
+2018-06-06 19:34:08,609 - INFO - 2 broadcasts: [9, 10, 6, 0]
+2018-06-06 19:34:08,610 - INFO - 0 just gets token and enters CS
+2018-06-06 19:34:08,610 - INFO - 0 received broadcast: : [9, 10, 6, 0] | from: 2
+2018-06-06 19:34:08,610 - INFO - 1 received broadcast: : [9, 10, 6, 0] | from: 2
+2018-06-06 19:34:08,811 - INFO - 0 sends token to: 2 | Q = [1] | Last: [9, 9, 5, 0] | Data: [9]
+2018-06-06 19:34:08,811 - INFO - 0 exitted CS
+2018-06-06 19:34:08,812 - INFO - 2 received token from: 0 | Q = [1] | Last: [9, 9, 5, 0] | Data: [9]
+2018-06-06 19:34:08,812 - INFO - 2 just gets token and enters CS
+2018-06-06 19:34:09,634 - INFO - 2 sends token to: 1 | Q = [] | Last: [9, 9, 6, 0] | Data: []
+2018-06-06 19:34:09,634 - INFO - 2 exitted CS
+2018-06-06 19:34:09,634 - INFO - 2 requests CS
+2018-06-06 19:34:09,634 - INFO - 2 broadcasts: [9, 10, 7, 0]
+2018-06-06 19:34:09,634 - INFO - 1 received token from: 2 | Q = [] | Last: [9, 9, 6, 0] | Data: []
+2018-06-06 19:34:09,634 - INFO - 1 just gets token and enters CS
+2018-06-06 19:34:09,635 - INFO - 1 received broadcast: : [9, 10, 7, 0] | from: 2
+2018-06-06 19:34:10,370 - INFO - 1 sends token to: 2 | Q = [] | Last: [9, 10, 6, 0] | Data: []
+2018-06-06 19:34:10,371 - INFO - 1 exitted CS
+2018-06-06 19:34:10,371 - INFO - 1 requests CS
+2018-06-06 19:34:10,371 - INFO - 2 received token from: 1 | Q = [] | Last: [9, 10, 6, 0] | Data: []
+2018-06-06 19:34:10,371 - INFO - 1 broadcasts: [9, 11, 7, 0]
+2018-06-06 19:34:10,372 - INFO - 2 just gets token and enters CS
+2018-06-06 19:34:10,372 - INFO - 2 received broadcast: : [9, 11, 7, 0] | from: 1
+2018-06-06 19:34:11,456 - INFO - 2 sends token to: 1 | Q = [] | Last: [9, 10, 7, 0] | Data: []
+2018-06-06 19:34:11,457 - INFO - 2 exitted CS
+2018-06-06 19:34:11,457 - INFO - 2 requests CS
+2018-06-06 19:34:11,458 - INFO - 2 broadcasts: [9, 11, 8, 0]
+2018-06-06 19:34:11,457 - INFO - 1 received token from: 2 | Q = [] | Last: [9, 10, 7, 0] | Data: []
+2018-06-06 19:34:11,458 - INFO - 1 just gets token and enters CS
+2018-06-06 19:34:11,459 - INFO - 1 received broadcast: : [9, 11, 8, 0] | from: 2
+2018-06-06 19:34:12,549 - INFO - 1 sends token to: 2 | Q = [] | Last: [9, 11, 7, 0] | Data: []
+2018-06-06 19:34:12,550 - INFO - 1 exitted CS
+2018-06-06 19:34:12,550 - INFO - 1 requests CS
+2018-06-06 19:34:12,551 - INFO - 2 received token from: 1 | Q = [] | Last: [9, 11, 7, 0] | Data: []
+2018-06-06 19:34:12,551 - INFO - 1 broadcasts: [9, 12, 8, 0]
+2018-06-06 19:34:12,551 - INFO - 2 just gets token and enters CS
+2018-06-06 19:34:12,552 - INFO - 2 received broadcast: : [9, 12, 8, 0] | from: 1
+2018-06-06 19:34:13,262 - INFO - 2 sends token to: 1 | Q = [] | Last: [9, 11, 8, 0] | Data: []
+2018-06-06 19:34:13,263 - INFO - 2 exitted CS
+2018-06-06 19:34:13,263 - INFO - 2 requests CS
+2018-06-06 19:34:13,264 - INFO - 2 broadcasts: [9, 12, 9, 0]
+2018-06-06 19:34:13,264 - INFO - 1 received token from: 2 | Q = [] | Last: [9, 11, 8, 0] | Data: []
+2018-06-06 19:34:13,264 - INFO - 1 just gets token and enters CS
+2018-06-06 19:34:13,265 - INFO - 1 received broadcast: : [9, 12, 9, 0] | from: 2
+2018-06-06 19:34:13,825 - INFO - 1 sends token to: 2 | Q = [] | Last: [9, 12, 8, 0] | Data: []
+2018-06-06 19:34:13,826 - INFO - 1 exitted CS
+2018-06-06 19:34:13,826 - INFO - 2 received token from: 1 | Q = [] | Last: [9, 12, 8, 0] | Data: []
+2018-06-06 19:34:13,826 - INFO - 1 requests CS
+2018-06-06 19:34:13,827 - INFO - 2 just gets token and enters CS
+2018-06-06 19:34:13,827 - INFO - 1 broadcasts: [9, 13, 9, 0]
+2018-06-06 19:34:13,827 - INFO - 2 received broadcast: : [9, 13, 9, 0] | from: 1
+2018-06-06 19:34:15,342 - INFO - 2 sends token to: 1 | Q = [] | Last: [9, 12, 9, 0] | Data: []
+2018-06-06 19:34:15,343 - INFO - 2 exitted CS
+2018-06-06 19:34:15,343 - INFO - 2 requests CS
+2018-06-06 19:34:15,344 - INFO - 2 broadcasts: [9, 13, 10, 0]
+2018-06-06 19:34:15,344 - INFO - 1 received token from: 2 | Q = [] | Last: [9, 12, 9, 0] | Data: []
+2018-06-06 19:34:15,344 - INFO - 1 just gets token and enters CS
+2018-06-06 19:34:15,345 - INFO - 1 received broadcast: : [9, 13, 10, 0] | from: 2
+2018-06-06 19:34:16,412 - INFO - 1 sends token to: 2 | Q = [] | Last: [9, 13, 9, 0] | Data: []
+2018-06-06 19:34:16,413 - INFO - 1 exitted CS
+2018-06-06 19:34:16,413 - INFO - 2 received token from: 1 | Q = [] | Last: [9, 13, 9, 0] | Data: []
+2018-06-06 19:34:16,414 - INFO - 2 just gets token and enters CS
+2018-06-06 19:34:17,740 - INFO - 2 exitted CS
+2018-06-06 19:34:17,740 - INFO - 2 requests CS
+2018-06-06 19:34:17,740 - INFO - 2 has token & enters CS
+2018-06-06 19:34:18,918 - INFO - 2 exitted CS
