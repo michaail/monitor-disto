@@ -34,5 +34,14 @@ PORTS = [
 ]
 ```
 
-### Uruchomienie przykładu
+#### Uruchomienie przykładu
 `python3 main.py`
+
+## Używanie monitora
+```python
+monit = monitor.Monitor(ID) # utworzenie monitora
+monit.request()             # pozyskiwanie locka do sekcji krytycznej
+monit.Data                  # dostęp do danych monitora
+monit.exit()                # zwolnineie locka - opuszczenie sekcji krytycznej
+monit.kill()                #  zakończenie pracy z monitorem
+```
